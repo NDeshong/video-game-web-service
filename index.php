@@ -88,7 +88,7 @@ function bondTemplate(film){
 	return `
 	
 			<div class="film">
-			<b>Show: </b>${film.Show}<br />
+			<b>Film: </b>${film.Film}<br />
 			<b>Title: </b>${film.Title}<br />
 			<b>Year: </b>${film.Year}<br />
 			<b>Director: </b>${film.Director}<br />

@@ -1,6 +1,6 @@
 <html>
 <head>
-<title>Bond Web Service Demo</title>
+<title>Video Game Web Service Demo</title>
 <style>
 	body {font-family:georgia;}
 	.film
@@ -35,17 +35,19 @@ $(document).ready(function() {
 
 function loadAJAX(cat)
 {
-	//AJAX connection will go here
-    //alert('cat is: ' + cat);
-
-	$.ajax({
-		type: "GET", 
-		dataType: "json", 
-		url: "api.php?cat=" + cat,
-		success: bondJSON
-
-	});
+   $.ajax({
+       type: "GET",
+       dataType: "json",
+       url: "api.php?cat=" + cat,
+       success: bondJSON,
+       error: function(xhr, status, error){
+        let errorMessage = xhr.status + ': ' + xhr.statusText
+        alert('Error - ' + errorMessage);
+    }
+ 
+   });
 }
+
     
 function toConsole(data)
 {//return data to console for JSON examination
@@ -62,6 +64,7 @@ function bondJSON(data){
 	$('#films').html('');
 
 	//loops through films and add template
+	/*
 	$.each(data.films,function(i,item){
 		let myFilm = bondTemplate(item);
 
@@ -69,18 +72,18 @@ function bondJSON(data){
 
 	});
 
-
+*/
 
 
 	// this loads data on page but bunched up
 	//$("#output").text(JSON.stringify(data));
 
 	//this creates a map of the JSON on our page
-	/*
+	
 	let myData = JSON.stringify(data,null,4);
 	myData = "<pre>" + myData + "</pre>";
 	$("#output").html(myData);
-	*/
+	
 }
 
 function bondTemplate(film){
@@ -88,7 +91,7 @@ function bondTemplate(film){
 	return `
 	
 			<div class="film">
-			<b>Show: </b>${film.Show}<br />
+			<b>Film: </b>${film.Film}<br />
 			<b>Title: </b>${film.Title}<br />
 			<b>Year: </b>${film.Year}<br />
 			<b>Director: </b>${film.Director}<br />
@@ -110,9 +113,9 @@ function bondTemplate(film){
 </script>
 </head>
 	<body>
-	<h1>Bond Web Service</h1>
-		<a href="year" class="category">NFL Active Player Contracts</a><br />
-		<a href="box" class="category">Bond Films By International Box Office Totals</a>
+	<h1>Video Game Web Service</h1>
+		<a href="year" class="category">Video Games by Year</a><br />
+		<a href="title" class="category">Video Games by Title</a>
 		<h3 id="filmtitle">Title Will Go Here</h3>
 		<div id="films">
 		<!--	<div class="film">

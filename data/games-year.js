@@ -7,7 +7,7 @@
 				"Company":"Sega",
 				"Year":1991,
 				"Rating":"E",
-				"Image":"sonic-the-hedgehog.jpg"
+				"Image":"images/sonic-the-hedgehog.jpg"
 			  },
               {
 				"Title":"Super Mario Kart",
